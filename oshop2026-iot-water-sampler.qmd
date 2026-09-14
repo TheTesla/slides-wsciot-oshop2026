@@ -182,10 +182,10 @@ Open IP67 enclosure with assembled IoT module.
 - Lab thinking: optimize standby → <10 µA ✔
 - Field reality: **LoRaWAN retries dominate**
   - Indoor / ground level: RSSI −118…−134 dBm, sometimes no gateway at all (e.g. OHS Berlin demo)
-  - Join succeeds at SF12, then uplink at ADR-assigned faster rate **never arrives**
+  - Join succeeds at SF12, then ADR switches uplink to **SF9** (TTN default "recommended") — which **never arrives** at these RSSI levels
   - 5× retry cycle ≈ **15 mAh/day** — 10–15× normal
 - Why: link budget + TTN Fair Access Policy (30 s/day, 1.4 s per SF12 join) + downlink margin
-- **Fix that saved us:** hard retry limit
+- **Fixes that saved us:** hard retry limit + register/configure the device with **SF12, not TTN "recommended" SF9**
 
 ::: {.callout-important}
 ## Takeaway
@@ -193,7 +193,7 @@ Design the energy budget for **worst-case connectivity**, not best-case sleep cu
 :::
 
 ::: {.notes}
-2 min. This is the core surprise: 6 months testing showed connectivity, not standby, depletes battery. TTN console gives no downlink metadata — debugging is blind.
+2 min. This is the core surprise: 6 months testing showed connectivity, not standby, depletes battery. TTN console gives no downlink metadata — debugging is blind. Practical tip: TTN suggests SF9 as recommended data rate at registration — override it with SF12 for marginal links, otherwise ADR pushes the uplink out of the link budget right after a successful SF12 join.
 :::
 
 ---

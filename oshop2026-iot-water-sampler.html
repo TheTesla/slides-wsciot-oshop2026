@@ -4131,11 +4131,11 @@ display:block!important;
 <li>Field reality: <strong>LoRaWAN retries dominate</strong>
 <ul>
 <li>Indoor / ground level: RSSI −118…−134 dBm, sometimes no gateway at all (e.g. OHS Berlin demo)</li>
-<li>Join succeeds at SF12, then uplink at ADR-assigned faster rate <strong>never arrives</strong></li>
+<li>Join succeeds at SF12, then ADR switches uplink to <strong>SF9</strong> (TTN default “recommended”) — which <strong>never arrives</strong> at these RSSI levels</li>
 <li>5× retry cycle ≈ <strong>15 mAh/day</strong> — 10–15× normal</li>
 </ul></li>
 <li>Why: link budget + TTN Fair Access Policy (30 s/day, 1.4 s per SF12 join) + downlink margin</li>
-<li><strong>Fix that saved us:</strong> hard retry limit</li>
+<li><strong>Fixes that saved us:</strong> hard retry limit + register/configure the device with <strong>SF12, not TTN “recommended” SF9</strong></li>
 </ul>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -4151,7 +4151,7 @@ display:block!important;
 </div>
 </div>
 <aside class="notes">
-<p>2 min. This is the core surprise: 6 months testing showed connectivity, not standby, depletes battery. TTN console gives no downlink metadata — debugging is blind.</p>
+<p>2 min. This is the core surprise: 6 months testing showed connectivity, not standby, depletes battery. TTN console gives no downlink metadata — debugging is blind. Practical tip: TTN suggests SF9 as recommended data rate at registration — override it with SF12 for marginal links, otherwise ADR pushes the uplink out of the link budget right after a successful SF12 join.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
