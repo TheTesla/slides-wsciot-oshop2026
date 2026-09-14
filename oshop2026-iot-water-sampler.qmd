@@ -1,0 +1,344 @@
+---
+title: "IoT Monitoring Solution for Event-Based Water Sample Collection"
+subtitle: "Lessons Learnt"
+author: "Stefan Helmert, Fouad Bahrpeyma, Till Haas, Dirk Reichelt (Smart Production Systems) — Thomas Grischek, Friedemann Sell (Water Management)<br>HTW Dresden – University of Applied Sciences"
+institute: "oSHOP Conference 2026 · Halle (Saale) · 23–24 Sept 2026"
+date: "2026-09-23"
+format:
+  revealjs:
+    theme: [default]
+    slide-number: true
+    chalkboard: false
+    preview-links: auto
+    footer: "oSHOP 2026 · Helmert et al. · HTW Dresden · IoT Water Sampler – Lessons Learnt"
+    code-line-numbers: false
+    embed-resources: true
+    smaller: false
+    scrollable: true
+---
+
+## Talk map {.smaller}
+
+**10–15 min talk + 10 min Q&A**
+
+::: {.incremental}
+- 1 min — Why this matters
+- 4 min — What we built: retrofit LoRaWAN notifier
+- 7 min — What broke / surprised us: 4 lessons
+- 2 min — What we'd recommend for OSH
+- 10 min — Discussion with you
+:::
+
+::: {.notes}
+Total ~14 min. Keep motivation short, spend most time on lessons 1–4. End with explicit invitation for Q&A.
+:::
+
+---
+
+## Why event-based sampling? {.smaller}
+
+::: columns
+::: {.column width="55%"}
+- Floods & heavy rain mobilize pollutants:
+  heavy metals, pesticides, microplastics, pathogens
+- Pollution peak is **short and unpredictable**
+- EU Water Framework Directive: sample → lab **within 48 h**
+- Miss the event = miss the data
+:::
+::: {.column width="45%"}
+![](photos/WSCcomplete.jpg){fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey;"}
+Blue protective tube (fixed in river) + removable insert: IoT module → valve head → bottle.
+:::
+:::
+:::
+
+::: {.notes}
+1 min. Key message: floods cause transient pollution, 48h holding time makes timing critical.
+:::
+
+---
+
+## The problem with passive samplers {.smaller}
+
+::: columns
+::: {.column width="50%"}
+**Passive sampler (existing, open design):**
+
+- Installed at fixed inlet elevation
+- Fills automatically when river stage exceeds threshold
+- Valve with float + magnet closes when full
+
+**But:**
+
+- ❌ No notification → staff drive out to check
+- ❌ Often find it **empty**
+- ❌ Labour-intensive, easy to miss 48 h window
+:::
+::: {.column width="50%"}
+![](photos/openhead.jpg){fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey;"}
+Opened valve head. Bottom: float ball with magnet. Top: fixed magnet — closes valve when full.
+:::
+:::
+:::
+
+::: {.notes}
+1 min. Stress: sampler itself works well, the missing piece is information.
+:::
+
+---
+
+## Our solution: retrofit notifier {.smaller}
+
+**Guiding principle: minimize complexity — no modification to the sampler.**
+
+```{mermaid}
+flowchart LR
+  A[River level rises<br/>Sampler fills<br/>Valve closes] --> B[Reed switch<br/>detects magnet]
+  B --> C[Arduino MKR WAN 1310<br/>cold-boots]
+  C --> D[LoRaWAN → TTN]
+  D --> E[Python MQTT gateway]
+  E --> F[Email via SMTP<br/>📱 Staff notified]
+```
+
+- Reed switch senses valve magnet **through the head wall**
+- LoRaWAN to The Things Network (low data, long range, no SIM)
+- Server: Python + Eclipse Paho MQTT → SMTP email
+- **No app, no dashboard, no database** — 4 env vars
+
+::: {.notes}
+1.5 min. Emphasize retrofit: plug + flexible cable, mount/dismount by hand in the field.
+:::
+
+---
+
+## Design for years without power {.smaller}
+
+::: columns
+::: {.column width="55%"}
+- **Battery:** Tadiran SL-360 Li-SOCl₂, 3.6 V / 2.4 Ah
+  - replaceable by user, low self-discharge
+- **Standby < 10 µA:**
+  - 3.3 V LDO **disabled** between events
+  - Only MCP7940 RTC + wake circuit alive (~2 µA)
+  - Arduino **fully off** — cold boot every wake
+- **Wake sources:**
+  - Reed pulse (sample taken) via RC shaper
+  - RTC alarm every ~1.5 h (keep-alive)
+- 2× supercaps buffer LoRa TX bursts
+- Protection: reverse polarity, overvoltage, series R on all I/O
+:::
+::: {.column width="45%"}
+![](photos/opencase.jpg){fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey;"}
+Open IP67 enclosure with assembled IoT module.
+:::
+:::
+:::
+
+::: {.notes}
+1.5 min. Point: not sleep mode — true power gating. RTC MFP pin holds regulator enable.
+:::
+
+---
+
+## Open-source throughout {.smaller}
+
+::: columns
+::: {.column width="50%"}
+**Hardware & mechanics**
+
+- KiCad PCB (1-sided, SMD, pre-assemblable)
+- Arduino MKR WAN 1310 as module → no custom radio
+- Parametric CAD with `xyzcad` (Python) — no GUI CAD needed
+- PETG printed parts, IP67 box + glands
+- I²C + analog ports exposed for future sensors
+
+**Replicate with:** soldering iron, FDM printer, drill, heat gun
+:::
+::: {.column width="50%"}
+**Software & licences**
+
+- Firmware: Arduino IDE
+- Server: Python, Git, Linux
+- PCB → firmware → server: **only OSS tools**
+- Licences: **AGPL-3.0 + CERN-OHL-S-2.0**
+- Repo: `HTWWaterSampleCollector2026`
+:::
+:::
+
+::: {.notes}
+1 min. oSHOP angle: long-term spare parts, no proprietary interfaces, low barrier.
+:::
+
+---
+
+## Lesson 1: Coverage — not standby — kills the battery {.smaller}
+
+- Lab thinking: optimize standby → <10 µA ✔
+- Field reality: **LoRaWAN retries dominate**
+  - Indoor / ground level: RSSI −118…−134 dBm, sometimes no gateway at all (e.g. OHS Berlin demo)
+  - Join succeeds at SF12, then uplink at ADR-assigned faster rate **never arrives**
+  - 5× retry cycle ≈ **15 mAh/day** — 10–15× normal
+- Why: link budget + TTN Fair Access Policy (30 s/day, 1.4 s per SF12 join) + downlink margin
+- **Fix that saved us:** hard retry limit
+
+::: {.callout-important}
+## Takeaway
+Design the energy budget for **worst-case connectivity**, not best-case sleep current.
+:::
+
+::: {.notes}
+2 min. This is the core surprise: 6 months testing showed connectivity, not standby, depletes battery. TTN console gives no downlink metadata — debugging is blind.
+:::
+
+---
+
+## Lesson 2: Cold boot is a feature {.smaller}
+
+::: {.incremental}
+- Every wake = full power-on + fresh OTAA join
+- **Never hung.** No LoRa lock-up, no watchdog needed.
+- Moved Dresden → Berlin (OHS2026): joined local gateway **autonomously**, zero reconfiguration
+- A session-preserving sleep design would have needed a hard reset
+- Cost: ~2 s bootloader + Arduino init per wake — irrelevant for event-driven use
+- Limitation: LoRaWAN gives **no network time** → RTC drifts, re-sync only via USB
+:::
+
+::: {.callout-tip}
+## Takeaway
+For rare-event devices, **stateless cold boot beats elegant power management.**
+:::
+
+::: {.notes}
+1.5 min. Counter-intuitive: the 'dumb' solution is the robust one.
+:::
+
+---
+
+## Lesson 3: Small parts, big delays {.smaller}
+
+| Part | What happened | Fix |
+|---|---|---|
+| **SAMD21 POR** | Supercaps ramp < 1 V/ms → POR never fires → undefined boot, manual reset needed | Add MAX809 supervisor next rev (one-time at deploy, but must fix) |
+| **MCP7940 crystal** | Common CC4V-T1A (2.1 fF) doesn't oscillate; needs high motional C + <70 kΩ ESR — **not in datasheet**, only in app note | CM7V-T1A from compatibility list |
+| **MCP7940 backup** | MFP pin behaviour on VBAT differs from datasheet; undocumented | Tolerated — cold-boot design absorbs it |
+| **Battery holder** | Intermittent spring↔tab contact | Solder bridge + shorten standoff |
+
+![](photos/batteryspring.jpg){height="220px" fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey; text-align: center;"}
+Battery holder fix: solder spring to rivet.
+:::
+
+::: {.notes}
+1.5 min. Pattern: information gaps, not design errors, cost weeks. MKRWAN TTN examples were the positive exception — OTAA worked copy-paste.
+:::
+
+---
+
+## Lesson 4: Mechanics & materials > electronics {.smaller}
+
+::: columns
+::: {.column width="50%"}
+![](photos/reedpremount.jpg){fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey;"}
+Reed + cable before potting into PETG case.
+:::
+:::
+::: {.column width="50%"}
+![](photos/reedcomplete.jpg){fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey;"}
+Potted with hot-glue, heat-shrink with adhesive liner.
+:::
+:::
+:::
+
+::: {.incremental}
+- Valve head v1: trapped air → bottle didn't fill → vent hole added
+- 2nd fixed magnet disturbed reed → orthogonal orientation + head redesign
+- Cable: stranded core wicks water (capillary!), jacket (TPE-V / EPDM-PP) low surface energy → glue won't stick — **never in datasheets**
+- SolidWorks handover → data loss, rework from exports
+:::
+
+::: {.callout-important}
+## Takeaway
+Interdisciplinary gaps (mechanics, material science) are the biggest OSH risk.
+:::
+
+::: {.notes}
+2 min. Electronics team underestimated wet, UV, 2-day submersion requirements.
+:::
+
+---
+
+## Conclusion: 3 recommendations {.smaller}
+
+1. **Build the MVP, gate the power.** Cold boot + email-only backend survived everything. Complexity is a failure point.
+2. **Budget for the worst link, demand better docs.** Retry caps; ask vendors for motional C, surface energy, downlink debug — datasheets + TTN console are incomplete.
+3. **Document mechanics like code.** Parametric CAD + step-by-step build log; plan for SolidWorks handover loss and material incompatibility.
+
+::: {.callout-note}
+## Open hardware, honestly
+All files (KiCad, xyzcad, firmware, server) published — including the failures above — under AGPL-3.0 / CERN-OHL-S-2.0.
+:::
+
+::: {style="font-size: 0.8em; color: grey;"}
+Funded by VolkswagenStiftung, grant 9C858. Full paper in oSHOP 2026 proceedings (Qucosa).
+:::
+
+::: {.notes}
+1.5 min. Bridge to discussion: ideals vs. deployment reality.
+:::
+
+---
+
+## Thank you — Discussion {.smaller}
+
+::: columns
+::: {.column width="60%"}
+**Repo & contact:** HTW Dresden, Smart Production Systems + Water Management\
+`github.com / HTWWaterSampleCollector2026`\
+stefan.helmert@htw-dresden.de
+
+**Questions to you (10 min Q&A):**
+
+- How do you test LoRaWAN where *you* deploy — coverage mapping?
+- Cold boot vs. sleep + ABP/session persist — what worked for you?
+- Which cable/potting/adhesive pairs survived years outdoors?
+- What belongs in a “well-behaved parts library” for environmental OSH?
+:::
+::: {.column width="40%"}
+![](photos/WSCcomplete.jpg){fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey;"}
+Ready for field test — notification included.
+:::
+:::
+:::
+
+::: {.notes}
+Invite show-and-tell: module + valve head on table. Ask audience for material tips — crowdsource the parts library idea from conclusion.
+:::
+
+---
+
+## Backup: numbers at a glance {.smaller}
+
+- Standby: <10 µA @ 3.6 V (RTC <2 µA, reed leakage <5 µA)
+- Battery: 2.4 Ah Li-SOCl₂ + 2× supercaps
+- Keep-alive: RTC alarm 1.5 h
+- Retries: 5× join+send, then stop (15 mAh/day worst case)
+- Boot: ~2 s to first app line (bootloader + core)
+- Enclosure: IP67, ether-TPU / EPDM-PP cable, PETG mounts
+- Server: Paho MQTT → SMTP/STARTTLS, 4 env vars
+
+::: {.notes}
+Only show if asked about dimensions, power, or server setup.
+:::

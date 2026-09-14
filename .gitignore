@@ -1,0 +1,8 @@
+# Quarto render output (rebuilt via `quarto render`)
+*_files/
+.quarto/
+.tmp/
+
+# Paper sources live in the Overleaf-synced paper repo, not here.
+# Local copy kept out of the slides repo on purpose.
+paper_wsciot_oshop2026/
