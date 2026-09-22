@@ -207,14 +207,12 @@ Open IP67 enclosure with assembled IoT module.
 
 ## Lesson 2: Cold boot is a feature
 
-::: {.incremental}
 - Every wake = full power-on + fresh OTAA join
 - **Never hung.** No LoRa lock-up, no watchdog needed.
 - Moved Dresden → Berlin (OHS2026): joined local gateway **autonomously**, zero reconfiguration
 - A session-preserving sleep design would have needed a hard reset
 - Cost: ~2 s bootloader + Arduino init per wake — irrelevant for event-driven use
 - Limitation: LoRaWAN gives **no network time** → RTC drifts, re-sync only via USB
-:::
 
 ::: {.callout-tip}
 ## Takeaway

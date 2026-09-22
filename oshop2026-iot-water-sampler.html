@@ -1296,12 +1296,12 @@ display:block!important;
 <section id="lesson-2-cold-boot-is-a-feature" class="slide level2">
 <h2>Lesson 2: Cold boot is a feature</h2>
 <ul>
-<li class="fragment">Every wake = full power-on + fresh OTAA join</li>
-<li class="fragment"><strong>Never hung.</strong> No LoRa lock-up, no watchdog needed.</li>
-<li class="fragment">Moved Dresden → Berlin (OHS2026): joined local gateway <strong>autonomously</strong>, zero reconfiguration</li>
-<li class="fragment">A session-preserving sleep design would have needed a hard reset</li>
-<li class="fragment">Cost: ~2 s bootloader + Arduino init per wake — irrelevant for event-driven use</li>
-<li class="fragment">Limitation: LoRaWAN gives <strong>no network time</strong> → RTC drifts, re-sync only via USB</li>
+<li>Every wake = full power-on + fresh OTAA join</li>
+<li><strong>Never hung.</strong> No LoRa lock-up, no watchdog needed.</li>
+<li>Moved Dresden → Berlin (OHS2026): joined local gateway <strong>autonomously</strong>, zero reconfiguration</li>
+<li>A session-preserving sleep design would have needed a hard reset</li>
+<li>Cost: ~2 s bootloader + Arduino init per wake — irrelevant for event-driven use</li>
+<li>Limitation: LoRaWAN gives <strong>no network time</strong> → RTC drifts, re-sync only via USB</li>
 </ul>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
