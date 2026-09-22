@@ -95,26 +95,18 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 
 ---
 
-## The IoT extension: retrofit notifier
+## The IoT extension
 
-**Guiding principle: minimize complexity — no modification to the sampler.**
+**Design goal: minimize complexity — no modification to the original passive sampler.**
 
-```{mermaid}
-flowchart LR
-  A[River level rises<br/>Sampler fills<br/>Valve closes] --> B[Reed switch<br/>detects magnet]
-  B --> C[Arduino MKR WAN 1310<br/>cold-boots]
-  C --> D[LoRaWAN → TTN]
-  D --> E[Python MQTT gateway]
-  E --> F[Email via SMTP<br/>📱 Staff notified]
-```
-
-- Reed switch senses valve magnet **through the head wall**
-- LoRaWAN to The Things Network (low data, long range, no SIM)
-- Server: Python + Eclipse Paho MQTT → SMTP email
-- **No app, no dashboard, no database** — 4 env vars
+1. River level rises — sampler fills, magnetic valve closes
+2. Reed switch senses the valve magnet **through the head wall**
+3. Arduino MKR WAN 1310 cold-boots
+4. LoRaWAN → The Things Network (low data, long range, no SIM)
+5. Python MQTT gateway → SMTP email to staff — **no app, no dashboard, no database** (4 env vars)
 
 ::: {.notes}
-1.5 min. Emphasize retrofit: plug + flexible cable, mount/dismount by hand in the field.
+1.5 min. Walk the chain verbally: level rises → valve closes → reed switch → cold boot → LoRaWAN/TTN → Python gateway → email. Emphasize retrofit: plug + flexible cable, mount/dismount by hand in the field.
 :::
 
 ---
