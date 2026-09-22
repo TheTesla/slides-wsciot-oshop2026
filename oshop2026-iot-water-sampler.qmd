@@ -191,7 +191,8 @@ Open IP67 enclosure with assembled IoT module.
 - Field reality: **LoRaWAN retries dominate**
   - 20 mA for 60 s per retry cycle
   - 4 retry cycles ≈ **21 mAh/day** (16 status messages/day, every 90 min)
-  - **→ battery empty after 3–4 months**
+
+**→ battery empty after 3–4 months**
 
 **→ Optimize for robustness: SF12 for robust short messages**
 :::
