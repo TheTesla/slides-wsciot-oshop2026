@@ -191,14 +191,11 @@ Open IP67 enclosure with assembled IoT module.
 - Field reality: **LoRaWAN retries dominate**
   - 20 mA for 20 s per retry cycle
   - 5× retry cycle ≈ **15 mAh/day** (10–15× normal)
-- **→ Optimize for robustness**
+
+**→ Optimize for robustness: SF12 for robust short messages**
 :::
 ::: {.column width="52%"}
 ![](photos/ttnsf12.png){fig-align="center"}
-
-::: {style="font-size: 0.7em; color: grey;"}
-RSSI −118…−134 dBm: join at SF12, ADR pushes uplink to SF9 — never arrives.
-:::
 :::
 :::
 
