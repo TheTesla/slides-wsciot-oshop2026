@@ -374,7 +374,7 @@ Only show if asked about dimensions, power, or server setup.
       footer.innerHTML =
         '<img class="footer-logo" src="logos/HTWD_logo_RGB_wordmark_color.svg" alt="HTWD" />' +
         '<span class="footer-date">23.09.2026</span>' +
-        '<span class="footer-title">IoT Water Sampler – Lessons Learnt / Smart Production Systems / Helmert et al.</span>' +
+        '<span class="footer-title">IoT monitoring solution for event based water sample collection · Faculty of Informatics / Mathematics · Stefan Helmert et al.</span>' +
         '<span class="footer-slide">' + (index + 1) + '</span>';
       slide.appendChild(footer);
     });
