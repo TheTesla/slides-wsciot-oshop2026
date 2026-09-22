@@ -250,6 +250,8 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 Mechanics & materials > electronics
 :::
 
+::: columns
+::: {.column width="55%"}
 - Valve head v1: trapped air → bottle didn't fill → vent hole added
 - 2nd fixed magnet disturbed reed → orthogonal orientation + head redesign
 - Cable: stranded core wicks water (capillary!), jacket (TPE-V / EPDM-PP) low surface energy → glue won't stick — **never in datasheets**
@@ -258,6 +260,11 @@ Mechanics & materials > electronics
 ::: {.callout-important}
 ## Takeaway
 Interdisciplinary gaps (mechanics, material science) are the biggest OSH risk.
+:::
+:::
+::: {.column width="45%"}
+![](photos/magnetconnector.jpg){fig-align="center"}
+:::
 :::
 
 ::: {.notes}
