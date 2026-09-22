@@ -307,8 +307,9 @@ Demonstration at COSMO Wissenschaftsforum in Dresden.
 :::
 :::
 
-::: {style="font-size: 0.8em; color: grey; display: flex; align-items: center; justify-content: center; gap: 2em; margin-top: 2.5em; margin-bottom: 1.5em;"}
-<img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 32px; margin-right: 1.5em;" />
+::: {style="font-size: 0.8em; color: grey; display: flex; flex-direction: column; align-items: center; gap: 0.6em; margin-top: 2.5em; margin-bottom: 1.5em;"}
+<img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 32px;" />
+
 <span>**Funded by VolkswagenStiftung** · Grant 9C858 · Full paper in oSHOP 2026 proceedings (Qucosa).</span>
 :::
 
