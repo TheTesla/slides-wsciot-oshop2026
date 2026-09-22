@@ -229,7 +229,7 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 
 ---
 
-## Lesson 3: Datasheet gaps cost weeks
+## Lesson 3: Errors and unknowns
 
 | Part | What happened | Fix |
 |---|---|---|
