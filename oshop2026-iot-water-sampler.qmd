@@ -284,11 +284,6 @@ Interdisciplinary gaps (mechanics, material science) are the biggest OSH risk.
 All files (KiCad, xyzcad, firmware, server) published — including the failures above — under AGPL-3.0 / CERN-OHL-S-2.0.
 :::
 
-::: {style="font-size: 0.8em; color: grey; display: flex; align-items: center; gap: 1em; margin-top: 0.5em;"}
-<img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 32px;" />
-<span>**Funded by VolkswagenStiftung** · Grant 9C858 · Full paper in oSHOP 2026 proceedings (Qucosa).</span>
-:::
-
 ::: {.notes}
 1.5 min. Bridge to discussion: ideals vs. deployment reality.
 :::
@@ -317,6 +312,11 @@ stefan.helmert@htw-dresden.de
 Ready for field test — notification included.
 :::
 :::
+:::
+
+::: {style="font-size: 0.8em; color: grey; display: flex; align-items: center; justify-content: center; gap: 1em; margin-top: 1em;"}
+<img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 32px;" />
+<span>**Funded by VolkswagenStiftung** · Grant 9C858 · Full paper in oSHOP 2026 proceedings (Qucosa).</span>
 :::
 
 ::: {.notes}
