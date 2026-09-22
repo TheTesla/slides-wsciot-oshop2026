@@ -309,8 +309,8 @@ All files (KiCad, xyzcad, firmware, server) published — including the failures
 :::
 
 ::: {style="font-size: 0.8em; color: grey; display: flex; align-items: center; gap: 1em; margin-top: 0.5em;"}
-<img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 24px;" />
-<span>Funded by VolkswagenStiftung, grant 9C858. Full paper in oSHOP 2026 proceedings (Qucosa).</span>
+<img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 32px;" />
+<span>**Funded by VolkswagenStiftung** · Grant 9C858 · Full paper in oSHOP 2026 proceedings (Qucosa).</span>
 :::
 
 ::: {.notes}
@@ -375,7 +375,7 @@ Only show if asked about dimensions, power, or server setup.
       var footer = document.createElement('div');
       footer.className = 'footer-bar';
       footer.innerHTML =
-        '<img class="footer-logo" src="logos/HTWD_logo_RGB_horizontal_color.svg" alt="HTWD" />' +
+        '<img class="footer-logo" src="logos/HTWD_logo_RGB_wordmark_color.svg" alt="HTWD" />' +
         '<span class="footer-date">23.09.2026</span>' +
         '<span class="footer-title">IoT Water Sampler – Lessons Learnt / Smart Production Systems / Helmert et al.</span>' +
         '<span class="footer-slide">' + index + '</span>';
