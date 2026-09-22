@@ -53,13 +53,32 @@ Total ~14 min. Keep motivation short, spend most time on lessons 1–4. End with
 
 ## Why event-based sampling?
 
-- Floods & heavy rain mobilize pollutants: heavy metals, pesticides, microplastics, pathogens
-- Pollution peak is **short and unpredictable**
-- EU Water Framework Directive: sample → lab **within 48 h**
+::: columns
+::: {.column width="52%"}
+**EU Water Framework Directive 2000/60/EG**
+
+- EU framework for water policy — all surface waters must reach **good ecological & chemical status** (2015, exceptions to 2027)
+- Compliance requires systematic monitoring of priority substances — in water, sediments and biota
+- Floods & heavy rain mobilize runoff pollutants: heavy metals, pesticides, microplastics, pathogens
+- Sample must reach the laboratory **within 48 h**
+
+::: {style="font-size: 0.65em; color: grey;"}
+Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.org/wiki/Richtlinie_2000/60/EG_%28Wasserrahmenrichtlinie%29)
+:::
+:::
+::: {.column width="48%"}
+**Why a passive water sampler?**
+
+- Event peaks are **short and unpredictable** — grab sampling and on-call staff miss them
 - Miss the event = miss the data
+- Passive sampler: permanently installed at a fixed inlet elevation, fully automatic
+- Fills only when the river stage exceeds the inlet → **event-based by design**
+- Unattended, low-cost, open source → suited for long-term monitoring
+:::
+:::
 
 ::: {.notes}
-1 min. Key message: floods cause transient pollution, 48h holding time makes timing critical.
+1.5 min. WFD sets the legal duty (good status, systematic monitoring incl. priority substances). The passive sampler is the right tool because the event timing is unpredictable — it captures the peak automatically, unattended.
 :::
 
 ---
