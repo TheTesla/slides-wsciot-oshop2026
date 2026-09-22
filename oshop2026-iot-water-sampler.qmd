@@ -307,7 +307,7 @@ Ready for field test — notification included.
 :::
 :::
 
-::: {style="font-size: 0.8em; color: grey; display: flex; align-items: center; justify-content: center; gap: 1em; margin-top: 1em;"}
+::: {style="font-size: 0.8em; color: grey; display: flex; align-items: center; justify-content: center; gap: 1.5em; margin-top: 2em;"}
 <img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 32px;" />
 <span>**Funded by VolkswagenStiftung** · Grant 9C858 · Full paper in oSHOP 2026 proceedings (Qucosa).</span>
 :::
