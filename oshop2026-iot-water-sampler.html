@@ -1268,7 +1268,8 @@ display:block!important;
 <li>Field reality: <strong>LoRaWAN retries dominate</strong>
 <ul>
 <li>20 mA for 60 s per retry cycle</li>
-<li>4 retry cycles ≈ <strong>15 mAh/day</strong> (10–15× normal)</li>
+<li>4 retry cycles ≈ <strong>21 mAh/day</strong> (16 status messages/day, every 90 min)</li>
+<li><strong>→ battery empty after 3–4 months</strong></li>
 </ul></li>
 </ul>
 <p><strong>→ Optimize for robustness: SF12 for robust short messages</strong></p>
@@ -1536,7 +1537,7 @@ display:block!important;
 <li>Standby: &lt;10 µA @ 3.6 V (RTC &lt;2 µA, reed leakage &lt;5 µA)</li>
 <li>Battery: 2.4 Ah Li-SOCl₂ + 2× supercaps</li>
 <li>Keep-alive: RTC alarm 1.5 h</li>
-<li>Retries: 4 retry cycles, then stop (15 mAh/day worst case)</li>
+<li>Retries: 4 retry cycles, then stop (21 mAh/day worst case)</li>
 <li>Boot: ~2 s to first app line (bootloader + core)</li>
 <li>Enclosure: IP67, ether-TPU / EPDM-PP cable, PETG mounts</li>
 <li>Server: Paho MQTT → SMTP/STARTTLS, 4 env vars</li>

@@ -190,7 +190,8 @@ Open IP67 enclosure with assembled IoT module.
 - Lab thinking: standby <10 µA ✔
 - Field reality: **LoRaWAN retries dominate**
   - 20 mA for 60 s per retry cycle
-  - 4 retry cycles ≈ **15 mAh/day** (10–15× normal)
+  - 4 retry cycles ≈ **21 mAh/day** (16 status messages/day, every 90 min)
+  - **→ battery empty after 3–4 months**
 
 **→ Optimize for robustness: SF12 for robust short messages**
 :::
@@ -349,7 +350,7 @@ Invite show-and-tell: module + valve head on table. Ask audience for material ti
 - Standby: <10 µA @ 3.6 V (RTC <2 µA, reed leakage <5 µA)
 - Battery: 2.4 Ah Li-SOCl₂ + 2× supercaps
 - Keep-alive: RTC alarm 1.5 h
-- Retries: 4 retry cycles, then stop (15 mAh/day worst case)
+- Retries: 4 retry cycles, then stop (21 mAh/day worst case)
 - Boot: ~2 s to first app line (bootloader + core)
 - Enclosure: IP67, ether-TPU / EPDM-PP cable, PETG mounts
 - Server: Paho MQTT → SMTP/STARTTLS, 4 env vars
