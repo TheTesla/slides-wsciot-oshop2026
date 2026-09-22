@@ -99,7 +99,7 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 
 ::: columns
 ::: {.column width="60%"}
-**Design goal: minimize complexity — no modification to the original passive sampler.**
+**Design goal: minimize complexity — no modification to the original passive sampler.** *(But nope.)*
 
 1. River level rises — sampler fills, magnetic valve closes
 2. Reed switch senses the valve magnet **through the head wall**
