@@ -18,7 +18,7 @@ format:
     <img src="logos/HTWD_logo_RGB_horizontal_color.svg" alt="HTWD" />
   </div>
   <div class="ts-photo">
-    <img src="photos/WSCcomplete.jpg" alt="Water sampler" />
+    <img src="photos/wsciot_out.jpg" alt="Water sampler in the field" />
   </div>
   <div class="ts-text">
     <h1>IoT Monitoring Solution for Event-Based Water Sample Collection — Lessons Learnt</h1>
