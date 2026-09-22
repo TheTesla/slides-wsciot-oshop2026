@@ -6,3 +6,8 @@
 # Paper sources live in the Overleaf-synced paper repo, not here.
 # Local copy kept out of the slides repo on purpose.
 paper_wsciot_oshop2026/
+
+# Local reference material (HTWD corporate design), not part of the slides
+HTWD_PPT-Master_20230612_eingeb.potx
+Screenshot*.png
+photos/Probenehmer_Friedrichsgrundbach.JPG
