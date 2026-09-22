@@ -92,7 +92,8 @@
 }
 
 .title-slide .ts-logo img {
-  height: 56px;
+  height: 48px;
+  width: auto;
 }
 
 .title-slide .ts-photo {
@@ -179,7 +180,8 @@
 }
 
 .reveal .footer-bar .footer-logo {
-  height: 28px;
+  height: 24px;
+  width: auto;
   margin-right: 12px;
 }
 

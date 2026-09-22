@@ -18,7 +18,7 @@ format:
 ```{=html}
 <div class="title-slide">
   <div class="ts-logo">
-    <img src="htwd-logo.svg" alt="HTWD" />
+    <img src="logos/HTWD_logo_RGB_horizontal_color.svg" alt="HTWD" />
   </div>
   <div class="ts-photo">
     <img src="photos/WSCcomplete.jpg" alt="Water sampler" />
@@ -308,8 +308,9 @@ Interdisciplinary gaps (mechanics, material science) are the biggest OSH risk.
 All files (KiCad, xyzcad, firmware, server) published — including the failures above — under AGPL-3.0 / CERN-OHL-S-2.0.
 :::
 
-::: {style="font-size: 0.8em; color: grey;"}
-Funded by VolkswagenStiftung, grant 9C858. Full paper in oSHOP 2026 proceedings (Qucosa).
+::: {style="font-size: 0.8em; color: grey; display: flex; align-items: center; gap: 1em; margin-top: 0.5em;"}
+<img src="logos/logo-vwstiftung-dark.svg" alt="VolkswagenStiftung" style="height: 24px;" />
+<span>Funded by VolkswagenStiftung, grant 9C858. Full paper in oSHOP 2026 proceedings (Qucosa).</span>
 :::
 
 ::: {.notes}
@@ -374,7 +375,7 @@ Only show if asked about dimensions, power, or server setup.
       var footer = document.createElement('div');
       footer.className = 'footer-bar';
       footer.innerHTML =
-        '<img class="footer-logo" src="htwd-logo-small.svg" alt="HTWD" />' +
+        '<img class="footer-logo" src="logos/HTWD_logo_RGB_horizontal_color.svg" alt="HTWD" />' +
         '<span class="footer-date">23.09.2026</span>' +
         '<span class="footer-title">IoT Water Sampler – Lessons Learnt / Smart Production Systems / Helmert et al.</span>' +
         '<span class="footer-slide">' + index + '</span>';
