@@ -10,6 +10,9 @@ format:
     scrollable: true
     embed-resources: true
     css: [htwd-theme.css]
+bibliography: references.bib
+csl: ieee.csl
+link-citations: true
 ---
 
 ```{=html}
@@ -157,7 +160,7 @@ Open IP67 enclosure with assembled IoT module.
 
 - KiCad PCB (1-sided, SMD, pre-assemblable)
 - Arduino MKR WAN 1310 as module → no custom radio
-- Parametric CAD with `xyzcad` (Python) — no GUI CAD needed
+- Parametric CAD with `xyzcad` (Python) — no GUI CAD needed [@11633154]
 - PETG printed parts, IP67 box + glands
 - I²C + analog ports exposed for future sensors
 
@@ -329,6 +332,15 @@ Ready for field test — notification included.
 
 ::: {.notes}
 Invite show-and-tell: module + valve head on table. Ask audience for material tips — crowdsource the parts library idea from conclusion.
+:::
+
+---
+
+## References
+
+::: {style="font-size: 0.75em;"}
+::: {#refs}
+:::
 :::
 
 ---
