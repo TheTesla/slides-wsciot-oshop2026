@@ -40,16 +40,14 @@ link-citations: true
 
 **10–15 min talk + 10 min Q&A**
 
-::: {.incremental}
-- 1 min — Why this matters
+- 1 min — Why event-based sampling (WFD, passive sampler)
 - 4 min — What we built: retrofit LoRaWAN notifier
-- 7 min — What broke / surprised us: 4 lessons
-- 2 min — What we'd recommend for OSH
+- 7 min — 4 lessons: coverage · cold boot · errors & unknowns · real-world problems
+- 1.5 min — 3 recommendations for OSH
 - 10 min — Discussion with you
-:::
 
 ::: {.notes}
-Total ~14 min. Keep motivation short, spend most time on lessons 1–4. End with explicit invitation for Q&A.
+Total ~14.5 min. Keep motivation short, spend most time on lessons 1–4. End with explicit invitation for Q&A.
 :::
 
 ---
