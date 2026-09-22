@@ -97,6 +97,8 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 
 ## The IoT extension
 
+::: columns
+::: {.column width="60%"}
 **Design goal: minimize complexity — no modification to the original passive sampler.**
 
 1. River level rises — sampler fills, magnetic valve closes
@@ -104,9 +106,14 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 3. Arduino MKR WAN 1310 cold-boots
 4. LoRaWAN → The Things Network (low data, long range, no SIM)
 5. Python MQTT gateway → SMTP email to staff — **no app, no dashboard, no database** (4 env vars)
+:::
+::: {.column width="40%"}
+<img src="photos/valveheadrender.png" alt="Valve head render" style="height: 440px; width: auto; display: block; margin: 0 auto;" />
+:::
+:::
 
 ::: {.notes}
-1.5 min. Walk the chain verbally: level rises → valve closes → reed switch → cold boot → LoRaWAN/TTN → Python gateway → email. Emphasize retrofit: plug + flexible cable, mount/dismount by hand in the field.
+1.5 min. Walk the chain verbally: level rises → valve closes → reed switch → cold boot → LoRaWAN/TTN → Python gateway → email. Emphasize retrofit: plug + flexible cable, mount/dismount by hand in the field. Render shows the retrofitted valve head.
 :::
 
 ---
