@@ -65,10 +65,6 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 :::
 ::: {.column width="38%"}
 ![](photos/watersampler_passive.jpg){height="380px" fig-align="center"}
-
-::: {style="font-size: 0.7em; color: grey; text-align: center;"}
-Passive water sampler deployed in the stream.
-:::
 :::
 :::
 
