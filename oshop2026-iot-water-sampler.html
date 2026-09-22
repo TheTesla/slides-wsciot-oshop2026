@@ -1267,8 +1267,8 @@ display:block!important;
 <li>Lab thinking: standby &lt;10 µA ✔</li>
 <li>Field reality: <strong>LoRaWAN retries dominate</strong>
 <ul>
-<li>20 mA for 20 s per retry cycle</li>
-<li>5× retry cycle ≈ <strong>15 mAh/day</strong> (10–15× normal)</li>
+<li>20 mA for 60 s per retry cycle</li>
+<li>4 retry cycles ≈ <strong>15 mAh/day</strong> (10–15× normal)</li>
 </ul></li>
 </ul>
 <p><strong>→ Optimize for robustness: SF12 for robust short messages</strong></p>
@@ -1280,7 +1280,7 @@ display:block!important;
 </div>
 </div></div>
 <aside class="notes">
-<p>2 min. Core surprise: 6 months testing showed connectivity, not standby, depletes battery. 20 mA @ 20 s per retry cycle; hard retry limit + register device with SF12, not TTN “recommended” SF9. TTN console gives no downlink metadata — debugging is blind.</p>
+<p>2 min. Core surprise: 6 months testing showed connectivity, not standby, depletes battery. 20 mA @ 60 s per retry cycle; hard retry limit + register device with SF12, not TTN “recommended” SF9. TTN console gives no downlink metadata — debugging is blind.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1536,7 +1536,7 @@ display:block!important;
 <li>Standby: &lt;10 µA @ 3.6 V (RTC &lt;2 µA, reed leakage &lt;5 µA)</li>
 <li>Battery: 2.4 Ah Li-SOCl₂ + 2× supercaps</li>
 <li>Keep-alive: RTC alarm 1.5 h</li>
-<li>Retries: 5× join+send, then stop (15 mAh/day worst case)</li>
+<li>Retries: 4 retry cycles, then stop (15 mAh/day worst case)</li>
 <li>Boot: ~2 s to first app line (bootloader + core)</li>
 <li>Enclosure: IP67, ether-TPU / EPDM-PP cable, PETG mounts</li>
 <li>Server: Paho MQTT → SMTP/STARTTLS, 4 env vars</li>

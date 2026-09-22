@@ -189,8 +189,8 @@ Open IP67 enclosure with assembled IoT module.
 ::: {.column width="48%"}
 - Lab thinking: standby <10 µA ✔
 - Field reality: **LoRaWAN retries dominate**
-  - 20 mA for 20 s per retry cycle
-  - 5× retry cycle ≈ **15 mAh/day** (10–15× normal)
+  - 20 mA for 60 s per retry cycle
+  - 4 retry cycles ≈ **15 mAh/day** (10–15× normal)
 
 **→ Optimize for robustness: SF12 for robust short messages**
 :::
@@ -200,7 +200,7 @@ Open IP67 enclosure with assembled IoT module.
 :::
 
 ::: {.notes}
-2 min. Core surprise: 6 months testing showed connectivity, not standby, depletes battery. 20 mA @ 20 s per retry cycle; hard retry limit + register device with SF12, not TTN "recommended" SF9. TTN console gives no downlink metadata — debugging is blind.
+2 min. Core surprise: 6 months testing showed connectivity, not standby, depletes battery. 20 mA @ 60 s per retry cycle; hard retry limit + register device with SF12, not TTN "recommended" SF9. TTN console gives no downlink metadata — debugging is blind.
 :::
 
 ---
@@ -349,7 +349,7 @@ Invite show-and-tell: module + valve head on table. Ask audience for material ti
 - Standby: <10 µA @ 3.6 V (RTC <2 µA, reed leakage <5 µA)
 - Battery: 2.4 Ah Li-SOCl₂ + 2× supercaps
 - Keep-alive: RTC alarm 1.5 h
-- Retries: 5× join+send, then stop (15 mAh/day worst case)
+- Retries: 4 retry cycles, then stop (15 mAh/day worst case)
 - Boot: ~2 s to first app line (bootloader + core)
 - Enclosure: IP67, ether-TPU / EPDM-PP cable, PETG mounts
 - Server: Paho MQTT → SMTP/STARTTLS, 4 env vars
