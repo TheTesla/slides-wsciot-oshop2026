@@ -255,7 +255,7 @@ Mechanics & materials > electronics
 - Valve head v1: trapped air → bottle didn't fill → vent hole added
 - 2nd fixed magnet disturbed reed → orthogonal orientation + head redesign
 - Cable: stranded core wicks water (capillary!), jacket (TPE-V / EPDM-PP) low surface energy → glue won't stick — **never in datasheets**
-- Missing design resources: SolidWorks handover → data loss, rework from exports
+- Missing design resources
 :::
 ::: {.column width="45%"}
 ![](photos/magnetconnector.jpg){fig-align="center" width="90%"}
