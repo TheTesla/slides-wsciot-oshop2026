@@ -76,6 +76,23 @@
   padding-right: 1.2em;
 }
 
+/* Quarto 1.8 embeds a screen-scoped rule (div.columns{display:initial}) that
+   overrides its own flex rule, stacking all columns vertically.
+   Force flex on screen; leave print styles untouched. */
+@media screen {
+  .reveal .slide div.columns {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    gap: 1em !important;
+    align-items: flex-start;
+  }
+  .reveal .slide div.column {
+    display: block !important;
+    overflow-x: visible !important;
+    min-width: 0;
+  }
+}
+
 /* ===== TITLE SLIDE (custom layout) ===== */
 .title-slide {
   position: relative;

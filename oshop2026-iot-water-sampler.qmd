@@ -64,7 +64,7 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 :::
 :::
 ::: {.column width="38%"}
-![](photos/watersampler_passive.jpg){height="380px" fig-align="center"}
+<img src="photos/watersampler_passive.jpg" alt="Passive water sampler" style="height: 320px; width: auto; display: block; margin: 0 auto;" />
 :::
 :::
 
