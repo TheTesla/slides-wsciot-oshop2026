@@ -130,6 +130,18 @@
   margin: 0 0 1.2em 0;
 }
 
+/* Absolute px sizes with !important: the em base is set by the Quarto
+   theme and must not influence the title slide typography. */
+@media screen {
+  .reveal .title-slide .ts-text h1 {
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+  }
+  .reveal .title-slide .ts-meta {
+    font-size: 13px !important;
+  }
+}
+
 .title-slide .ts-meta {
   position: absolute;
   bottom: 8%;
