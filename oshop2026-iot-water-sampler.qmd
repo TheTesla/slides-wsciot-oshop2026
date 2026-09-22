@@ -302,7 +302,7 @@ stefan.helmert@htw-dresden.de
 ![](photos/watersample_expo_cosmo.jpg){fig-align="center"}
 
 ::: {style="font-size: 0.7em; color: grey;"}
-Ready for field test — notification included.
+Demonstration at COSMO Wissenschaftsforum in Dresden.
 :::
 :::
 :::
