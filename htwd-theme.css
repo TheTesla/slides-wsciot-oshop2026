@@ -193,6 +193,11 @@
 }
 
 /* ===== FOOTER (HTWD style) ===== */
+.reveal .slides section.footer-safe {
+  box-sizing: border-box;
+  padding-bottom: 60px;
+}
+
 .reveal .footer-bar {
   position: fixed;
   bottom: 0;

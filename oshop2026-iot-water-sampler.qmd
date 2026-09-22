@@ -290,7 +290,7 @@ All files (KiCad, xyzcad, firmware, server) published — including the failures
 
 ---
 
-## Thank you — Discussion
+## Thank you — Discussion {.footer-safe}
 
 ::: columns
 ::: {.column width="60%"}
