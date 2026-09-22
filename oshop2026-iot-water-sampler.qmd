@@ -57,7 +57,8 @@ Total ~14 min. Keep motivation short, spend most time on lessons 1–4. End with
 ::: {.column width="62%"}
 - **EU Water Framework Directive 2000/60/EG:** all waters must reach good ecological & chemical status → pollutants must be monitored
 - Floods mobilize pollutants (heavy metals, pesticides, microplastics) — peaks are short & unpredictable, sample → lab **within 48 h**
-- **Passive sampler solves this:** permanently installed, fills automatically above a stage threshold → event-based by design, unattended, low-cost
+- **Passive sampler solves this:** permanently installed, fills automatically once the water level exceeds a defined inlet elevation — event-based by design, unattended, low-cost
+- Once filled, a **passive magnetic valve** closes the bottle to prevent washout of the sample
 
 ::: {style="font-size: 0.65em; color: grey;"}
 Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.org/wiki/Richtlinie_2000/60/EG_%28Wasserrahmenrichtlinie%29)
