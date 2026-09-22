@@ -87,7 +87,7 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 1. Staff drive out to check — often
 2. The **48 h window** is easily missed
 
-<img src="photos/pn_head_old.png" alt="Old passive sampler head (PN)" style="height: 150px; width: auto; display: block; margin: 2.5em 0 0 0;" />
+<img src="photos/pn_head_old.png" alt="Old passive sampler head (PN)" style="height: 300px; width: auto; display: block; margin: 1.5em 0 0 0;" />
 :::
 ::: {.column width="42%"}
 <img src="photos/pn_friedrichsgrundbach.jpg" alt="Passive water sampler at Friedrichsgrundbach" style="height: 460px; width: auto; display: block; margin: 0 auto;" />
