@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 56" width="320" height="56">
+  <text x="0" y="34" font-family="Open Sans, Arial, sans-serif" font-weight="700" font-size="34" fill="#000000" letter-spacing="-1">HTW</text>
+  <path d="M96 8 C96 8, 96 48, 96 48 C96 48, 118 48, 118 34 C118 20, 96 20, 96 8 Z" fill="#EC6608"/>
+  <text x="130" y="16" font-family="Open Sans, Arial, sans-serif" font-weight="400" font-size="9" fill="#333333">Hochschule für Technik und</text>
+  <text x="130" y="27" font-family="Open Sans, Arial, sans-serif" font-weight="400" font-size="9" fill="#333333">Wirtschaft Dresden</text>
+  <text x="130" y="40" font-family="Open Sans, Arial, sans-serif" font-weight="400" font-size="9" fill="#333333">University of Applied Sciences</text>
+</svg>

@@ -1,23 +1,43 @@
 ---
 title: "IoT Monitoring Solution for Event-Based Water Sample Collection"
 subtitle: "Lessons Learnt"
-author: "Stefan Helmert, Fouad Bahrpeyma, Till Haas, Dirk Reichelt<br>Smart Production Systems Research Group, HTW Dresden – University of Applied Sciences"
-institute: "oSHOP Conference 2026 · Halle (Saale) · 23–24 Sept 2026"
-date: "2026-09-23"
+author: "Stefan Helmert, Fouad Bahrpeyma, Till Haas, Dirk Reichelt · Thomas Grischek, Friedemann Sell"
+date: "23.09.2026"
 format:
   revealjs:
-    theme: [serif]
-    slide-number: true
+    theme: [default]
+    slide-number: false
     chalkboard: false
     preview-links: auto
-    footer: "HTW Dresden · Institute of Smart Production Systems · oSHOP 2026"
-    code-line-numbers: false
-    embed-resources: true
     smaller: false
     scrollable: true
+    embed-resources: true
+    css: [htwd-theme.css]
 ---
 
-## Talk map {.smaller}
+```{=html}
+<div class="title-slide">
+  <div class="ts-logo">
+    <img src="htwd-logo.svg" alt="HTWD" />
+  </div>
+  <div class="ts-photo">
+    <img src="photos/WSCcomplete.jpg" alt="Water sampler" />
+  </div>
+  <div class="ts-text">
+    <h1>IoT Monitoring Solution for Event-Based Water Sample Collection — Lessons Learnt</h1>
+  </div>
+  <div class="ts-meta">
+    <div class="meta-title">IoT monitoring solution for event based water sample collection</div>
+    <div class="meta-name">Stefan Helmert, Fouad Bahrpeyma, Till Haas, Prof. Dirk Reichelt, Prof. Thomas Grischek, Friedemann Sell</div>
+    <div class="meta-faculty">Smart Production Systems / Water Management, HTW Dresden</div>
+    <div class="meta-date">23.09.2026</div>
+  </div>
+</div>
+```
+
+---
+
+## Talk map
 
 **10–15 min talk + 10 min Q&A**
 
@@ -35,12 +55,11 @@ Total ~14 min. Keep motivation short, spend most time on lessons 1–4. End with
 
 ---
 
-## Why event-based sampling? {.smaller}
+## Why event-based sampling?
 
 ::: columns
 ::: {.column width="55%"}
-- Floods & heavy rain mobilize pollutants:
-  heavy metals, pesticides, microplastics, pathogens
+- Floods & heavy rain mobilize pollutants: heavy metals, pesticides, microplastics, pathogens
 - Pollution peak is **short and unpredictable**
 - EU Water Framework Directive: sample → lab **within 48 h**
 - Miss the event = miss the data
@@ -60,7 +79,7 @@ Blue protective tube (fixed in river) + removable insert: IoT module → valve h
 
 ---
 
-## The problem with passive samplers {.smaller}
+## The problem with passive samplers
 
 ::: columns
 ::: {.column width="50%"}
@@ -91,7 +110,7 @@ Opened valve head. Bottom: float ball with magnet. Top: fixed magnet — closes 
 
 ---
 
-## Our solution: retrofit notifier {.smaller}
+## Our solution: retrofit notifier
 
 **Guiding principle: minimize complexity — no modification to the sampler.**
 
@@ -115,7 +134,7 @@ flowchart LR
 
 ---
 
-## Design for years without power {.smaller}
+## Design for years without power
 
 ::: columns
 ::: {.column width="55%"}
@@ -146,7 +165,7 @@ Open IP67 enclosure with assembled IoT module.
 
 ---
 
-## Open-source throughout {.smaller}
+## Open-source throughout
 
 ::: columns
 ::: {.column width="50%"}
@@ -177,7 +196,7 @@ Open IP67 enclosure with assembled IoT module.
 
 ---
 
-## Lesson 1: Coverage — not standby — kills the battery {.smaller}
+## Lesson 1: Coverage — not standby — kills the battery
 
 - Lab thinking: optimize standby → <10 µA ✔
 - Field reality: **LoRaWAN retries dominate**
@@ -198,7 +217,7 @@ Design the energy budget for **worst-case connectivity**, not best-case sleep cu
 
 ---
 
-## Lesson 2: Cold boot is a feature {.smaller}
+## Lesson 2: Cold boot is a feature
 
 ::: {.incremental}
 - Every wake = full power-on + fresh OTAA join
@@ -220,16 +239,16 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 
 ---
 
-## Lesson 3: Small parts, big delays {.smaller}
+## Lesson 3: Small parts, big delays
 
 | Part | What happened | Fix |
 |---|---|---|
-| **SAMD21 POR** | Supercaps ramp < 1 V/ms → POR never fires → undefined boot, manual reset needed | Add MAX809 supervisor next rev (one-time at deploy, but must fix) |
-| **MCP7940 crystal** | Common CC4V-T1A (2.1 fF) doesn't oscillate; needs high motional C + <70 kΩ ESR — **not in datasheet**, only in app note | CM7V-T1A from compatibility list |
+| **SAMD21 POR** | Supercaps ramp < 1 V/ms → POR never fires → undefined boot, manual reset needed | Add MAX809 supervisor next rev |
+| **MCP7940 crystal** | Common CC4V-T1A (2.1 fF) doesn't oscillate; needs high motional C + <70 kΩ ESR — **not in datasheet** | CM7V-T1A from compatibility list |
 | **MCP7940 backup** | MFP pin behaviour on VBAT differs from datasheet; undocumented | Tolerated — cold-boot design absorbs it |
 | **Battery holder** | Intermittent spring↔tab contact | Solder bridge + shorten standoff |
 
-![](photos/batteryspring.jpg){height="220px" fig-align="center"}
+![](photos/batteryspring.jpg){height="180px" fig-align="center"}
 
 ::: {style="font-size: 0.7em; color: grey; text-align: center;"}
 Battery holder fix: solder spring to rivet.
@@ -241,7 +260,7 @@ Battery holder fix: solder spring to rivet.
 
 ---
 
-## Lesson 4: Mechanics & materials > electronics {.smaller}
+## Lesson 4: Mechanics & materials > electronics
 
 ::: columns
 ::: {.column width="50%"}
@@ -278,7 +297,7 @@ Interdisciplinary gaps (mechanics, material science) are the biggest OSH risk.
 
 ---
 
-## Conclusion: 3 recommendations {.smaller}
+## Conclusion: 3 recommendations
 
 1. **Build the MVP, gate the power.** Cold boot + email-only backend survived everything. Complexity is a failure point.
 2. **Budget for the worst link, demand better docs.** Retry caps; ask vendors for motional C, surface energy, downlink debug — datasheets + TTN console are incomplete.
@@ -299,7 +318,7 @@ Funded by VolkswagenStiftung, grant 9C858. Full paper in oSHOP 2026 proceedings 
 
 ---
 
-## Thank you — Discussion {.smaller}
+## Thank you — Discussion
 
 ::: columns
 ::: {.column width="60%"}
@@ -312,7 +331,7 @@ stefan.helmert@htw-dresden.de
 - How do you test LoRaWAN where *you* deploy — coverage mapping?
 - Cold boot vs. sleep + ABP/session persist — what worked for you?
 - Which cable/potting/adhesive pairs survived years outdoors?
-- What belongs in a “well-behaved parts library” for environmental OSH?
+- What belongs in a "well-behaved parts library" for environmental OSH?
 :::
 ::: {.column width="40%"}
 ![](photos/WSCcomplete.jpg){fig-align="center"}
@@ -329,7 +348,7 @@ Invite show-and-tell: module + valve head on table. Ask audience for material ti
 
 ---
 
-## Backup: numbers at a glance {.smaller}
+## Backup: numbers at a glance
 
 - Standby: <10 µA @ 3.6 V (RTC <2 µA, reed leakage <5 µA)
 - Battery: 2.4 Ah Li-SOCl₂ + 2× supercaps
@@ -342,3 +361,31 @@ Invite show-and-tell: module + valve head on table. Ask audience for material ti
 ::: {.notes}
 Only show if asked about dimensions, power, or server setup.
 :::
+
+```{=html}
+<script>
+// Add HTWD footer to all slides except title slide
+(function() {
+  function addFooter() {
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    slides.forEach(function(slide, index) {
+      if (index === 0) return; // skip title slide
+      if (slide.querySelector('.footer-bar')) return;
+      var footer = document.createElement('div');
+      footer.className = 'footer-bar';
+      footer.innerHTML =
+        '<img class="footer-logo" src="htwd-logo-small.svg" alt="HTWD" />' +
+        '<span class="footer-date">23.09.2026</span>' +
+        '<span class="footer-title">IoT Water Sampler – Lessons Learnt / Smart Production Systems / Helmert et al.</span>' +
+        '<span class="footer-slide">' + index + '</span>';
+      slide.appendChild(footer);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', addFooter);
+  } else {
+    addFooter();
+  }
+})();
+</script>
+```
