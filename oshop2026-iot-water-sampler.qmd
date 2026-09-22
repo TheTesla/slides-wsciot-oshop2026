@@ -173,7 +173,7 @@ Open IP67 enclosure with assembled IoT module.
 - Server: Python, Git, Linux
 - PCB → firmware → server: **only OSS tools**
 - Licences: **AGPL-3.0 + CERN-OHL-S-2.0**
-- Repo: `HTWWaterSampleCollector2026`
+- Repo: `TheTesla/HTW-Water-Sample-Collector`
 :::
 :::
 
@@ -295,15 +295,8 @@ All files (KiCad, xyzcad, firmware, server) published — including the failures
 ::: columns
 ::: {.column width="60%"}
 **Repo & contact:** HTW Dresden, Smart Production Systems + Water Management\
-`github.com / HTWWaterSampleCollector2026`\
+<https://github.com/TheTesla/HTW-Water-Sample-Collector>\
 stefan.helmert@htw-dresden.de
-
-**Questions to you (10 min Q&A):**
-
-- How do you test LoRaWAN where *you* deploy — coverage mapping?
-- Cold boot vs. sleep + ABP/session persist — what worked for you?
-- Which cable/potting/adhesive pairs survived years outdoors?
-- What belongs in a "well-behaved parts library" for environmental OSH?
 :::
 ::: {.column width="40%"}
 ![](photos/WSCcomplete.jpg){fig-align="center"}
