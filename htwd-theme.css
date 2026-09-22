@@ -100,7 +100,6 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 36%;
   height: 100%;
   clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
   overflow: hidden;
@@ -108,10 +107,10 @@
 }
 
 .title-slide .ts-photo img {
-  width: 100%;
+  display: block;
   height: 100%;
-  object-fit: cover;
-  object-position: center;
+  width: auto;
+  object-position: right;
 }
 
 .title-slide .ts-text {
