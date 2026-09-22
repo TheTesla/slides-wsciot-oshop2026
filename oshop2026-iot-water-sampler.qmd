@@ -235,7 +235,7 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 |---|---|---|
 | **SAMD21 POR** | Supercaps ramp < 1 V/ms → POR never fires → undefined boot, manual reset needed | Add MAX809 supervisor next rev |
 | **MCP7940 crystal** | Common CC4V-T1A (2.1 fF) doesn't oscillate; needs high motional C + <70 kΩ ESR — **not in datasheet** | CM7V-T1A from compatibility list |
-| **MCP7940 backup** | MFP pin behaviour on VBAT differs from datasheet; undocumented | Tolerated — cold-boot design absorbs it |
+| **MCP7940 backup** | MFP pin behaviour on VBAT differs from datasheet; undocumented | Tolerated — default behaviour + cold-boot design absorb it |
 | **Battery holder** | Intermittent spring↔tab contact | Solder bridge + shorten standoff |
 
 ::: {.notes}
