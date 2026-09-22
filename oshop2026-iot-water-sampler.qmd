@@ -244,7 +244,11 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 
 ---
 
-## Lesson 4: Mechanics & materials > electronics
+## Lesson 4: Real-world deployment is interdisciplinary
+
+::: {style="font-size: 0.8em; color: grey;"}
+Mechanics & materials > electronics
+:::
 
 ::: columns
 ::: {.column width="50%"}
