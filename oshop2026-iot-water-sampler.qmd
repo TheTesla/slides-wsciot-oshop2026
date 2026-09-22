@@ -275,9 +275,9 @@ Interdisciplinary gaps (mechanics, material science) are the biggest OSH risk.
 
 ## Conclusion: 3 recommendations
 
-1. **Build the MVP, gate the power.** Cold boot + email-only backend survived everything. Complexity is a failure point.
-2. **Budget for the worst link, demand better docs.** Retry caps; ask vendors for motional C, surface energy, downlink debug — datasheets + TTN console are incomplete.
-3. **Document mechanics like code.** Parametric CAD + step-by-step build log; plan for SolidWorks handover loss and material incompatibility.
+1. **Analyze, test, validate, document, repair** the status quo.
+2. **Optimize the MVP** for minimum complexity and maximum robustness.
+3. **Minimize the requirements** for involved people.
 
 ::: {.callout-note}
 ## Open hardware, honestly
