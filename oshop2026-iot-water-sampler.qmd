@@ -192,9 +192,11 @@ Open IP67 enclosure with assembled IoT module.
   - 20 mA for 60 s per retry cycle
   - 4 retry cycles ≈ **21 mAh/day** (16 status messages/day, every 90 min)
 
+::: {style="margin-left: 2em;"}
 **→ battery empty after 3–4 months**
 
 **→ Optimize for robustness: SF12 for robust short messages**
+:::
 :::
 ::: {.column width="52%"}
 ![](photos/ttnsf12.png){fig-align="center"}
