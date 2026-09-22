@@ -53,21 +53,10 @@ Total ~14 min. Keep motivation short, spend most time on lessons 1–4. End with
 
 ## Why event-based sampling?
 
-::: columns
-::: {.column width="55%"}
 - Floods & heavy rain mobilize pollutants: heavy metals, pesticides, microplastics, pathogens
 - Pollution peak is **short and unpredictable**
 - EU Water Framework Directive: sample → lab **within 48 h**
 - Miss the event = miss the data
-:::
-::: {.column width="45%"}
-![](photos/WSCcomplete.jpg){fig-align="center"}
-
-::: {style="font-size: 0.7em; color: grey;"}
-Blue protective tube (fixed in river) + removable insert: IoT module → valve head → bottle.
-:::
-:::
-:::
 
 ::: {.notes}
 1 min. Key message: floods cause transient pollution, 48h holding time makes timing critical.
@@ -75,21 +64,22 @@ Blue protective tube (fixed in river) + removable insert: IoT module → valve h
 
 ---
 
-## The problem with passive samplers
+## The passive water sampler
 
 ::: columns
 ::: {.column width="50%"}
-**Passive sampler (existing, open design):**
+**Existing, open-source design (HTW Dresden):**
 
-- Installed at fixed inlet elevation
-- Fills automatically when river stage exceeds threshold
-- Valve with float + magnet closes when full
+- Installed at a fixed inlet elevation in the river
+- Fills automatically when the river stage exceeds the inlet
+- Float + magnet valve closes when the bottle is full
+- Works unattended — but silent
 
-**But:**
+**The problem:**
 
-- ❌ No notification → staff drive out to check
-- ❌ Often find it **empty**
-- ❌ Labour-intensive, easy to miss 48 h window
+- ❌ No notification when a sample is taken
+- ❌ Staff drive out to check — often find it **empty**
+- ❌ Labour-intensive; the 48 h window is easily missed
 :::
 ::: {.column width="50%"}
 ![](photos/openhead.jpg){fig-align="center"}
@@ -101,12 +91,12 @@ Opened valve head. Bottom: float ball with magnet. Top: fixed magnet — closes 
 :::
 
 ::: {.notes}
-1 min. Stress: sampler itself works well, the missing piece is information.
+1.5 min. The sampler itself works well — the missing piece is information: WHEN was the sample taken?
 :::
 
 ---
 
-## Our solution: retrofit notifier
+## The IoT extension: retrofit notifier
 
 **Guiding principle: minimize complexity — no modification to the sampler.**
 
