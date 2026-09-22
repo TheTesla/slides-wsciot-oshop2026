@@ -77,32 +77,13 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 
 ## The passive water sampler
 
-::: columns
-::: {.column width="50%"}
-**Existing, open-source design (HTW Dresden):**
+**Problem: no notification**
 
-- Installed at a fixed inlet elevation in the river
-- Fills automatically when the river stage exceeds the inlet
-- Float + magnet valve closes when the bottle is full
-- Works unattended — but silent
-
-**The problem:**
-
-- ❌ No notification when a sample is taken
-- ❌ Staff drive out to check — often find it **empty**
-- ❌ Labour-intensive; the 48 h window is easily missed
-:::
-::: {.column width="50%"}
-![](photos/openhead.jpg){fig-align="center"}
-
-::: {style="font-size: 0.7em; color: grey;"}
-Opened valve head. Bottom: float ball with magnet. Top: fixed magnet — closes valve when full.
-:::
-:::
-:::
+1. Staff drive out to check — often
+2. The **48 h window** is easily missed
 
 ::: {.notes}
-1.5 min. The sampler itself works well — the missing piece is information: WHEN was the sample taken?
+1 min. The sampler itself works (previous slide) — the missing piece is information: WHEN was the sample taken? This is exactly what the IoT module provides.
 :::
 
 ---
