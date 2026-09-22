@@ -100,9 +100,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  width: 62%;
+  width: 36%;
   height: 100%;
-  clip-path: polygon(38% 0%, 100% 0%, 100% 100%, 0% 100%);
+  clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
   overflow: hidden;
   z-index: 1;
 }
@@ -118,7 +118,7 @@
   position: absolute;
   top: 28%;
   left: 5%;
-  width: 42%;
+  width: 48%;
   z-index: 10;
 }
 
