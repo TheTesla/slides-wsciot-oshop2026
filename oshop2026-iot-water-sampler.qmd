@@ -256,15 +256,15 @@ Mechanics & materials > electronics
 - 2nd fixed magnet disturbed reed → orthogonal orientation + head redesign
 - Cable: stranded core wicks water (capillary!), jacket (TPE-V / EPDM-PP) low surface energy → glue won't stick — **never in datasheets**
 - SolidWorks handover → data loss, rework from exports
+:::
+::: {.column width="45%"}
+![](photos/magnetconnector.jpg){fig-align="center" width="90%"}
+:::
+:::
 
 ::: {.callout-important}
 ## Takeaway
 Interdisciplinary gaps (mechanics, material science) are the biggest OSH risk.
-:::
-:::
-::: {.column width="45%"}
-![](photos/magnetconnector.jpg){fig-align="center"}
-:::
 :::
 
 ::: {.notes}
