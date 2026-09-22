@@ -53,12 +53,23 @@ Total ~14 min. Keep motivation short, spend most time on lessons 1–4. End with
 
 ## Why event-based sampling?
 
+::: columns
+::: {.column width="62%"}
 - **EU Water Framework Directive 2000/60/EG:** all waters must reach good ecological & chemical status → pollutants must be monitored
 - Floods mobilize pollutants (heavy metals, pesticides, microplastics) — peaks are short & unpredictable, sample → lab **within 48 h**
 - **Passive sampler solves this:** permanently installed, fills automatically above a stage threshold → event-based by design, unattended, low-cost
 
 ::: {style="font-size: 0.65em; color: grey;"}
 Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.org/wiki/Richtlinie_2000/60/EG_%28Wasserrahmenrichtlinie%29)
+:::
+:::
+::: {.column width="38%"}
+![](photos/watersampler_passive.jpg){height="380px" fig-align="center"}
+
+::: {style="font-size: 0.7em; color: grey; text-align: center;"}
+Passive water sampler deployed in the stream.
+:::
+:::
 :::
 
 ::: {.notes}
