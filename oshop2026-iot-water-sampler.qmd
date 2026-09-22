@@ -299,7 +299,7 @@ All files (KiCad, xyzcad, firmware, server) published — including the failures
 stefan.helmert@htw-dresden.de
 :::
 ::: {.column width="40%"}
-![](photos/WSCcomplete.jpg){fig-align="center"}
+![](photos/watersample_expo_cosmo.jpg){fig-align="center"}
 
 ::: {style="font-size: 0.7em; color: grey;"}
 Ready for field test — notification included.
