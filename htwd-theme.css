@@ -152,10 +152,6 @@
   color: var(--htwd-black);
 }
 
-.title-slide .ts-meta .meta-title {
-  font-size: 1em;
-}
-
 .title-slide .ts-meta .meta-name {
   font-weight: 700;
 }
