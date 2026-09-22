@@ -77,10 +77,17 @@ Source: [Richtlinie 2000/60/EG (Wasserrahmenrichtlinie)](https://de.wikipedia.or
 
 ## The passive water sampler
 
+::: columns
+::: {.column width="58%"}
 **Problem: no notification**
 
 1. Staff drive out to check — often
 2. The **48 h window** is easily missed
+:::
+::: {.column width="42%"}
+<img src="photos/pn_friedrichsgrundbach.jpg" alt="Passive water sampler at Friedrichsgrundbach" style="height: 460px; width: auto; display: block; margin: 0 auto;" />
+:::
+:::
 
 ::: {.notes}
 1 min. The sampler itself works (previous slide) — the missing piece is information: WHEN was the sample taken? This is exactly what the IoT module provides.
