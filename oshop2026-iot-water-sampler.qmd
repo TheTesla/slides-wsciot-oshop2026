@@ -229,7 +229,7 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 
 ---
 
-## Lesson 3: Small parts, big delays
+## Lesson 3: Datasheet gaps cost weeks
 
 | Part | What happened | Fix |
 |---|---|---|
@@ -237,12 +237,6 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 | **MCP7940 crystal** | Common CC4V-T1A (2.1 fF) doesn't oscillate; needs high motional C + <70 kΩ ESR — **not in datasheet** | CM7V-T1A from compatibility list |
 | **MCP7940 backup** | MFP pin behaviour on VBAT differs from datasheet; undocumented | Tolerated — cold-boot design absorbs it |
 | **Battery holder** | Intermittent spring↔tab contact | Solder bridge + shorten standoff |
-
-![](photos/batteryspring.jpg){height="180px" fig-align="center"}
-
-::: {style="font-size: 0.7em; color: grey; text-align: center;"}
-Battery holder fix: solder spring to rivet.
-:::
 
 ::: {.notes}
 1.5 min. Pattern: information gaps, not design errors, cost weeks. MKRWAN TTN examples were the positive exception — OTAA worked copy-paste.
