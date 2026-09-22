@@ -244,35 +244,16 @@ For rare-event devices, **stateless cold boot beats elegant power management.**
 
 ---
 
-## Lesson 4: Real-world deployment is interdisciplinary
+## Lesson 4: Real-world problems
 
 ::: {style="font-size: 0.8em; color: grey;"}
 Mechanics & materials > electronics
 :::
 
-::: columns
-::: {.column width="50%"}
-![](photos/reedpremount.jpg){fig-align="center"}
-
-::: {style="font-size: 0.7em; color: grey;"}
-Reed + cable before potting into PETG case.
-:::
-:::
-::: {.column width="50%"}
-![](photos/reedcomplete.jpg){fig-align="center"}
-
-::: {style="font-size: 0.7em; color: grey;"}
-Potted with hot-glue, heat-shrink with adhesive liner.
-:::
-:::
-:::
-
-::: {.incremental}
 - Valve head v1: trapped air → bottle didn't fill → vent hole added
 - 2nd fixed magnet disturbed reed → orthogonal orientation + head redesign
 - Cable: stranded core wicks water (capillary!), jacket (TPE-V / EPDM-PP) low surface energy → glue won't stick — **never in datasheets**
 - SolidWorks handover → data loss, rework from exports
-:::
 
 ::: {.callout-important}
 ## Takeaway
