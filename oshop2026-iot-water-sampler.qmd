@@ -1,8 +1,5 @@
 ---
-title: "IoT Monitoring Solution for Event-Based Water Sample Collection"
-subtitle: "Lessons Learnt"
-author: "Stefan Helmert, Fouad Bahrpeyma, Till Haas, Dirk Reichelt · Thomas Grischek, Friedemann Sell"
-date: "23.09.2026"
+pagetitle: "IoT Monitoring Solution for Event-Based Water Sample Collection – Lessons Learnt"
 format:
   revealjs:
     theme: [default]
@@ -378,7 +375,7 @@ Only show if asked about dimensions, power, or server setup.
         '<img class="footer-logo" src="logos/HTWD_logo_RGB_wordmark_color.svg" alt="HTWD" />' +
         '<span class="footer-date">23.09.2026</span>' +
         '<span class="footer-title">IoT Water Sampler – Lessons Learnt / Smart Production Systems / Helmert et al.</span>' +
-        '<span class="footer-slide">' + index + '</span>';
+        '<span class="footer-slide">' + (index + 1) + '</span>';
       slide.appendChild(footer);
     });
   }
