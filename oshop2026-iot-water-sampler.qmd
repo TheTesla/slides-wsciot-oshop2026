@@ -295,7 +295,7 @@ All files (KiCad, xyzcad, firmware, server) published — including the failures
 
 ::: columns
 ::: {.column width="60%"}
-**Repo & contact:** HTW Dresden, Smart Production Systems + Water Management\
+**Repo & contact:** HTW Dresden, Prof. Information Management + Water Sciences\
 <https://github.com/TheTesla/HTW-Water-Sample-Collector>\
 stefan.helmert@htw-dresden.de
 :::
