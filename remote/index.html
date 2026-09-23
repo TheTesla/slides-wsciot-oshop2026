@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Remote — WSCIoT oSHoP 2026</title>
+<style>
+:root { color-scheme: dark; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; margin: 0; }
+body { font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif; background: #1a1a1a; color: #eee; display: flex; flex-direction: column; align-items: center; padding: 12px; user-select: none; touch-action: manipulation; }
+#status { font-size: 13px; color: #999; padding: 4px 10px; border: 1px solid #444; border-radius: 14px; }
+#status.ok { color: #7bd47b; border-color: #2e7d32; }
+#counter { font-size: 34px; font-weight: 700; margin: 14px 0 6px; }
+#decktitle { font-size: 12px; color: #888; margin-bottom: 10px; text-align: center; }
+main { display: grid; grid-template-columns: 1fr 2fr 2fr 1fr; gap: 10px; width: 100%; max-width: 520px; flex: 1; align-content: center; }
+button { border: none; border-radius: 14px; background: #2b2b2b; color: #eee; font-size: 16px; font-family: inherit; cursor: pointer; }
+button:active { background: #EC6608; color: #fff; }
+.small { font-size: 22px; }
+.big { font-size: 26px; font-weight: 700; padding: 26px 0; }
+#gotoRow { display: flex; gap: 8px; width: 100%; max-width: 520px; margin-top: 10px; }
+#gotoRow input { flex: 1; padding: 12px; font-size: 18px; border-radius: 10px; border: 1px solid #444; background: #222; color: #eee; text-align: center; }
+#gotoRow button { padding: 12px 20px; font-size: 16px; font-weight: 700; background: #EC6608; color: #fff; }
+#pairRow { display: flex; gap: 8px; width: 100%; max-width: 520px; margin-top: 10px; }
+#pairRow input { flex: 1; padding: 12px; font-size: 15px; border-radius: 10px; border: 1px solid #444; background: #222; color: #eee; min-width: 0; }
+#pairRow button { padding: 12px 18px; font-size: 15px; font-weight: 700; background: #EC6608; color: #fff; }
+#hint { font-size: 11px; color: #666; margin-top: 10px; text-align: center; }
+</style>
+</head>
+<body>
+<div id="status">disconnected</div>
+<div id="counter">&ndash; / &ndash;</div>
+<div id="decktitle">IoT Monitoring — Lessons Learnt · oSHoP 2026</div>
+<main>
+  <button id="first" class="small" title="First slide">&#9198;</button>
+  <button id="prev" class="big">&#9664; PREV</button>
+  <button id="next" class="big">NEXT &#9654;</button>
+  <button id="last" class="small" title="Last slide">&#9197;</button>
+</main>
+<div id="gotoRow">
+  <input id="gotoNum" type="number" min="1" inputmode="numeric" placeholder="Slide #">
+  <button id="gotoGo">GO</button>
+</div>
+<div id="pairRow">
+  <input id="peerId" placeholder="Presenter-ID" autocomplete="off">
+  <button id="connectBtn">CONNECT</button>
+</div>
+<div id="hint">Pairing: open presenter deck, tap &#128241; Remote, scan the QR &mdash; or type the ID above.</div>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+(function () {
+  var statusEl = document.getElementById('status');
+  var counterEl = document.getElementById('counter');
+  var peerIdInput = document.getElementById('peerId');
+  var peer = null;
+  var conn = null;
+
+  function setStatus(text, ok) {
+    statusEl.textContent = text;
+    statusEl.classList.toggle('ok', !!ok);
+  }
+
+  function send(m) {
+    if (conn && conn.open) conn.send(JSON.stringify(m));
+  }
+
+  function onData(d) {
+    try {
+      var m = JSON.parse(d);
+      if (m.type === 'state') counterEl.textContent = (m.h + 1) + ' / ' + m.total;
+    } catch (e) {}
+  }
+
+  function connect(id) {
+    if (!id) { setStatus('enter a Presenter-ID'); return; }
+    if (typeof Peer === 'undefined') { setStatus('offline: peerjs CDN not loaded'); return; }
+    setStatus('connecting\u2026');
+    peer = new Peer();
+    peer.on('open', function () {
+      conn = peer.connect(id, { reliable: true });
+      conn.on('open', function () { setStatus('connected \u2713', true); });
+      conn.on('data', onData);
+      conn.on('close', function () { setStatus('disconnected'); });
+      conn.on('error', function () { setStatus('connection error'); });
+    });
+    peer.on('error', function (e) { setStatus('error: ' + e.type); });
+  }
+
+  document.getElementById('next').addEventListener('click', function () { send({ cmd: 'next' }); });
+  document.getElementById('prev').addEventListener('click', function () { send({ cmd: 'prev' }); });
+  document.getElementById('first').addEventListener('click', function () { send({ cmd: 'first' }); });
+  document.getElementById('last').addEventListener('click', function () { send({ cmd: 'last' }); });
+  document.getElementById('gotoGo').addEventListener('click', function () {
+    var n = parseInt(document.getElementById('gotoNum').value, 10);
+    if (!isNaN(n) && n >= 1) send({ cmd: 'goto', h: n - 1 });
+  });
+  document.getElementById('connectBtn').addEventListener('click', function () { connect(peerIdInput.value.trim()); });
+
+  var id = location.hash.slice(1);
+  if (id) { peerIdInput.value = id; connect(id); }
+})();
+</script>
+</body>
+</html>

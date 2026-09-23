@@ -1,0 +1,106 @@
+<style>
+#remote-widget { position: fixed; right: 14px; bottom: 58px; z-index: 300; font-family: 'Open Sans', 'Segoe UI', Arial, sans-serif; text-align: right; }
+#remote-widget .rw-btn { border: 1px solid #ccc; border-radius: 20px; background: #fff; color: #333; padding: 6px 14px; font-size: 14px; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,.2); }
+#remote-widget .rw-btn:hover { background: #f3f3f3; }
+#remote-widget .rw-panel { margin-top: 8px; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 10px; box-shadow: 0 4px 14px rgba(0,0,0,.25); text-align: center; font-size: 12px; color: #333; }
+#remote-widget .rw-status { margin-bottom: 6px; color: #555; }
+#remote-widget .rw-id { margin-top: 4px; color: #999; word-break: break-all; }
+@media print { #remote-widget { display: none !important; } }
+</style>
+<div id="remote-widget">
+  <button id="rw-btn" class="rw-btn" type="button">&#128241; Remote</button>
+  <div id="rw-panel" class="rw-panel" style="display:none">
+    <div id="rw-status" class="rw-status">starting&hellip;</div>
+    <div id="rw-qr"></div>
+    <div id="rw-id" class="rw-id"></div>
+  </div>
+</div>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  var btn = document.getElementById('rw-btn');
+  var panel = document.getElementById('rw-panel');
+  var statusEl = document.getElementById('rw-status');
+  var qrEl = document.getElementById('rw-qr');
+  var idEl = document.getElementById('rw-id');
+  var peer = null;
+  var conn = null;
+
+  function setStatus(text, ok) {
+    statusEl.textContent = text;
+    statusEl.style.color = ok ? '#2e7d32' : '#555';
+  }
+
+  function sendState() {
+    if (conn && conn.open && window.Reveal) {
+      var i = Reveal.getIndices();
+      conn.send(JSON.stringify({ type: 'state', h: i.h, f: i.f || 0, total: Reveal.getTotalSlides() }));
+    }
+  }
+
+  function handleCmd(d) {
+    if (!window.Reveal) return;
+    var total = Reveal.getTotalSlides();
+    switch (d.cmd) {
+      case 'next': Reveal.next(); break;
+      case 'prev': Reveal.prev(); break;
+      case 'first': Reveal.slide(0); break;
+      case 'last': Reveal.slide(total - 1); break;
+      case 'goto':
+        var h = Math.max(0, Math.min(total - 1, d.h | 0));
+        Reveal.slide(h);
+        break;
+    }
+    sendState();
+  }
+
+  function wire(newConn) {
+    if (conn) { try { conn.close(); } catch (e) {} }
+    conn = newConn;
+    conn.on('open', function () {
+      setStatus('Remote connected &#10003;', true);
+      qrEl.innerHTML = '';
+      idEl.textContent = '';
+      btn.textContent = 'Remote &#10003;';
+      sendState();
+    });
+    conn.on('data', function (d) {
+      try { handleCmd(JSON.parse(d)); } catch (e) {}
+    });
+    conn.on('close', function () {
+      setStatus('Remote disconnected');
+      btn.innerHTML = '&#128241; Remote';
+    });
+  }
+
+  btn.addEventListener('click', function () {
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    if (panel.style.display === 'none' || peer) return;
+    if (typeof Peer === 'undefined') { setStatus('offline: peerjs CDN not loaded'); return; }
+    setStatus('connecting&hellip;');
+    peer = new Peer();
+    peer.on('open', function (id) {
+      var url = location.href.replace(/[^/]*$/, '') + 'remote/#' + id;
+      setStatus('scan with your phone');
+      idEl.textContent = 'ID: ' + id;
+      if (typeof QRCode !== 'undefined') {
+        qrEl.innerHTML = '';
+        new QRCode(qrEl, { text: url, width: 150, height: 150, correctLevel: QRCode.CorrectLevel.M });
+      } else {
+        setStatus('offline: QR lib not loaded');
+      }
+    });
+    peer.on('connection', wire);
+    peer.on('error', function (e) { setStatus('error: ' + e.type); });
+  });
+
+  function whenReveal(cb) {
+    if (window.Reveal && Reveal.isReady && Reveal.isReady()) { cb(); }
+    else { setTimeout(function () { whenReveal(cb); }, 250); }
+  }
+  whenReveal(function () {
+    Reveal.on('slidechanged', sendState);
+  });
+})();
+</script>
