@@ -299,8 +299,10 @@ All files (KiCad, xyzcad, firmware, server) published — including the failures
 <https://github.com/TheTesla/HTW-Water-Sample-Collector>\
 stefan.helmert@htw-dresden.de
 
-- **Prof. Information Management:** IoT extension
-- **Prof. Water Sciences:** passive water sampler
+- **Prof. Information Management**
+  - IoT extension
+- **Prof. Water Sciences**
+  - passive water sampler
 :::
 ::: {.column width="40%"}
 ![](photos/watersample_expo_cosmo.jpg){fig-align="center"}
